@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="description" content="STUDENT DOCK - A platform for sharing and accessing study materials.">
+<meta name="keywords" content="STUDENT DOCK, study materials, educational platform, upload notes">
+<meta name="author" content="Pipavath Araveen">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STUDENT DOCK - Sign Up</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        body, html {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('bcim.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+        .Signpage {
+            position: relative;
+            max-width: 400px;
+            width: 90%;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            color: #ffffff;
+        }
+        #logo {
+            font-size: 30px;
+            font-weight: bold;
+            text-shadow: 0px 3px 0px  black;
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 12px 0; /* Increased margin for better spacing */
+            border: 2px solid transparent;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2); /* Slightly lighter for more contrast */
+            color: #fff;
+            font-size: 16px;
+            transition: border 0.3s, background 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #FFD700;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            color: #333;
+            background: #FFD700;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #ffff00;
+        }
+        .terms, p {
+            color: #3a3636;
+            font-size: 14px;
+        }
+        .terms a, p a {
+            color: #FFD700;
+        }
+        #s{
+            color: rgb(52, 45, 45);
+        }
+        label a,p a{
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="Signpage">
+        <div id="logo">STUDENT DOCK</div>
+        <div id="s">Sign Up</div>
+        <form id="signupForm" action="signup_handler.php" method="post" enctype="multipart/form-data">
+            <input id="fname" name="fname" type="text" placeholder="First Name" required autocomplete="off">
+            <input id="lname" name="lname" type="text" placeholder="Last Name" required autocomplete="off">
+            <input id="email" name="email" type="email" placeholder="example@gmail.com" required>
+            <input id="num" name="num" type="number" placeholder="Mobile number" required>
+            <input id="password" name="pass" type="password" placeholder="Set Password" required>
+            <input id="cpassword" name="cpass" type="password" placeholder="Confirm Password" required>
+            <div class="terms">
+                <input type="checkbox" id="check" required>
+                <label for="check"><a href="EDTterms.html">Accept all terms and conditions</a></label>
+            </div>
+            <button type="submit" id="btn" >Sign Up</button>
+            <a href="EDTHome.html">skip</a>
+        </form>
+        <p>Already have an account? <a href="EDTlogin.html">Log in</a></p>
+    </div>
+    <script>
+        function checkFormValidity() {
+            const isFormValid = document.getElementById('check').checked;
+            document.getElementById('btn').disabled = !isFormValid;
+        }
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', checkFormValidity);
+        });
+    </script>
+</body>
+</html>

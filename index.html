@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="description" content="STUDENT DOCK - A platform for sharing and accessing study materials.">
+<meta name="keywords" content="STUDENT DOCK, study materials, educational platform, upload notes">
+<meta name="author" content="Pipavath Araveen">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dock - Share and Access Study Materials Easily</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333; /* Dark Gray for text */
+            background-color: #f9f9f9; /* Light Gray for background */
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #FFC107; /* Bright Yellow header */
+            color: #fff; /* White text */
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #fff; /* White links in header */
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+           text-shadow: 0px 4px 2px black;
+            transition: color 0.3s ease;
+            color: #ffe082; /* Light Yellow on hover */
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('bcim.jpg') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: #fff;
+            text-align: center;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+        }
+
+        .hero .btn {
+            padding: 10px 30px;
+            background-color: #FFC107; /* Bright Yellow button */
+            color: #333; /* Dark Gray text on button */
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero .btn:hover {
+            box-shadow: 0px 0px 1px 1px yellow;
+            background-color: #FFD54F; /* Lighter Yellow on hover */
+        }
+
+        /* Features Section */
+        .features {
+            padding: 60px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .features h3 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #FFC107; /* Bright Yellow heading */
+        }
+
+        .features-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .feature {
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature img {
+            width: 60px;
+            margin-bottom: 20px;
+        }
+
+        .feature h4 {
+            margin-bottom: 15px;
+            color: #FFC107; /* Bright Yellow heading */
+        }
+
+        .feature p {
+            color: #666; /* Medium Gray for text */
+            font-size: 0.95rem;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 60px 20px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .how-it-works h3 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #FFC107; /* Bright Yellow heading */
+        }
+
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .step {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .step h4 {
+            margin-bottom: 15px;
+            color: #FFC107; /* Bright Yellow heading */
+        }
+
+        .step p {
+            color: #666; /* Medium Gray for text */
+            font-size: 0.95rem;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #333; /* Dark Gray footer */
+            color: #fff; /* White text */
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #FFC107; /* Bright Yellow links */
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #ffe082; /* Light Yellow on hover */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .features-container, .steps {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .feature, .step {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Student Dock</h1>
+        <nav>
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="EDTLogin.html">Login</a>
+            <a href="sign.html">Signup</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Share and Access Study Materials with Ease</h2>
+            <p>Join Student Dock today to collaborate with fellow students, access a vast repository of study materials, and enhance your learning experience.</p>
+            <a href="sign.html" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h3>Our Features</h3>
+        <div class="features-container">
+            <div class="feature">
+                <img src="library.png" alt="Feature 1">
+                <h4>Extensive Library</h4>
+                <p>Access a wide range of study materials across various subjects and disciplines.</p>
+            </div>
+            <div class="feature">
+                <img src="upload.png" alt="Feature 2">
+                <h4>Easy Uploads</h4>
+                <p>Upload your study materials effortlessly and share them with the community.</p>
+            </div>
+            <div class="feature">
+                <img src="colab.png" alt="Feature 3">
+                <h4>Collaborative Learning</h4>
+                <p>Engage with fellow students, discuss topics, and build a supportive learning environment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <h3>How It Works</h3>
+        <div class="steps">
+            <div class="step">
+                <h4>1. Sign Up</h4>
+                <p>Create your account in just a few simple steps.</p>
+            </div>
+            <div class="step">
+                <h4>2. Upload or Browse</h4>
+                <p>Share your materials or explore resources shared by others.</p>
+            </div>
+            <div class="step">
+                <h4>3. Collaborate</h4>
+                <p>Join discussions, interact with peers, and enhance your knowledge.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Student Dock. All Rights Reserved.</p>
+        <p>
+            <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+        </p>
+    </footer>
+</body>
+</html>

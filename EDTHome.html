@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="description" content="STUDENT DOCK - A platform for sharing and accessing study materials.">
+<meta name="keywords" content="STUDENT DOCK, study materials, educational platform, upload notes">
+<meta name="author" content="Pipavath Araveen">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STUDENTDOCK</title>
+    <style>
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body, html {
+            height: 100%;
+            /*background: linear-gradient(135deg, #91d6ef, #79b8ec,#5babec,#379aeb,#0b87ec);*/
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        body{
+            background-image: url(bcim.jpg);
+           
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0,0.85);
+            color: #fff;
+            padding: 15px 20px;
+            z-index: 10;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            color: #FFD700;
+            font-size: 24px;
+            text-decoration: none;
+            font-weight: 600;
+            text-shadow: 0px 3px 0px rgb(0, 0, 0);
+        }
+
+        /* Hamburger menu */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 15;
+        }
+
+        .hamburger div {
+            width: 30px;
+            height: 4px;
+            background-color: #FFD700;
+            margin: 5px 0;
+            transition: 0.4s;
+        }
+
+        /* Sidebar Menu */
+        .sidebar {
+            position: fixed;
+            right: -250px;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #4e4b4b;
+            opacity: 0.8;
+            padding: 30px 20px;
+            transition: 1s;
+            z-index: 20;
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a,
+        .sidebar ul li button {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 20px;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .sidebar ul li a:hover,
+        .sidebar ul li button:hover {
+            background-color: rgba(255, 215, 0, 0.3);
+        }
+
+        /* Content Area */
+        .content {
+            text-align: center;
+            color: #333;
+            padding: 40px;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+            margin-top: 80px;
+            margin-bottom: 40px;
+            z-index: 5;
+            transition: filter 0.3s ease;
+        }
+
+        .content.overlay-active {
+            filter: brightness(0.7);
+        }
+
+        .content h1 {
+            font-size: 36px;
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        /* File Upload Section */
+        .file-upload button,
+        .file-upload input[type="submit"] {
+            font-size: 18px;
+            color: #333;
+            background-color: #FFD700;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+
+        .file-upload button:hover,
+        .file-upload input[type="submit"]:hover {
+            background: #ffff00;
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+                width: 90%;
+            }
+        }
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+           
+        }
+
+        footer a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: double;
+        }
+
+        .privacy-bar {
+            background-color: #000;
+            padding: 10px;
+            text-align: center;
+            color: #fff;
+            font-size: 18px;
+            position: fixed;
+            bottom: 0px;
+            width: 100%;
+        }
+        #logout{
+            background-color: rgb(220, 27, 27);
+            color: white;
+        }
+        #logout:hover{
+            background-color: rgb(255, 0, 0);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="sidebar" class="sidebar">
+        <ul>
+            <li><a href="EDTHome.html">Home</a></li>
+            <li><a href="EDTAbout.html">About</a></li>
+            <li><a href="contacts.html">Contact</a></li>
+            <li><button id="logout" onclick="window.location.href='EDTsignout.html'">Logout</button></li>
+        </ul>
+    </div>
+
+    <nav>
+        <div class="navbar">
+            <div class="logo"><a href="EDTHome.html">STUDENT DOCK</a></div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="content" class="content">
+        <h1>Welcome to STUDENTDOCK</h1>
+        <p>Your go-to platform for uploading, previewing, and downloading files with ease!<br><br>
+        <b>Upload Files:</b> Effortlessly upload multiple files at once.<br><br>
+        <b>Preview Files:</b> View images and PDFs right in your browser before downloading.<br><br>
+        <b>Download Files:</b> Quickly download any shared files with a single click.<br><br>
+        Get started today by uploading or browsing the available files. Thank you for choosing STUDENTDOCK!</p>
+
+        <form class="file-upload" action="EDTData.php" method="post" enctype="multipart/form-data">
+            <input type="file" id="upfile" name="upfile[]" multiple hidden>
+            <button type="button" onclick="document.getElementById('upfile').click()">Choose files</button>
+            <span id="btns">No files chosen yet</span>
+            <input type="submit" value="Upload files">
+            <button type="button" onclick="window.location.href='home.php'">SHOW FILES</button>
+        </form>
+    </div>
+    <footer>
+        <p>&copy;  2024 STUDENT DOCK</p>
+    </footer>
+
+    <div class="privacy-bar">
+        <p><a href="EDTPrivacy.html">Privacy Policy</a> | <a href="TermsOfService.html">Terms of Service</a></p>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+
+            // Toggle sidebar visibility
+            sidebar.classList.toggle('active');
+            content.classList.toggle('overlay-active');
+        }
+
+        // Update Button Text Based on File Selection
+        const inp = document.getElementById("upfile");
+        const btnS = document.getElementById("btns");
+
+        inp.addEventListener("change", () => {
+            if (inp.files.length > 0) {
+                const fileNames = Array.from(inp.files).map(file => file.name).join(', ');
+                btnS.textContent = fileNames;
+            } else {
+                btnS.textContent = "No files chosen yet";
+            }
+        });
+    </script>
+
+</body>
+</html>
